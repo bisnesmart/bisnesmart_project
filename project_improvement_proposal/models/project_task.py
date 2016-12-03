@@ -8,8 +8,8 @@ from openerp import models, fields, api
 
 class ProjectTasks(models.Model):
     _inherit = "project.task"
-
-    description_proposal = fields.Text(help="Proposal description.")
+    description = fields.Html()
+    description_proposal = fields.Html(help="Proposal description.")
     proposal_ok = fields.Boolean(help="Check if this task is a improvementt proposal")
     applicant_id = fields.Many2one('res.partner', string='Apllicant', help="Person who demmand the improvement proposal")
 
