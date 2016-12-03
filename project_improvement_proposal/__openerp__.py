@@ -29,7 +29,7 @@
     "data": [
         "report/report_improvement_proposal.xml",
         "views/task_view.xml",
-        "edi/project_task_improvement_proposal.xml",
+        #"edi/project_task_improvement_proposal.xml",
 
     ],
     'installable': True
