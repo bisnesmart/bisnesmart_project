@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <openerp>
-    <!-- <data>
+    <data>
         <!-- EDI related Email Templates menu -->
         <record model="ir.actions.act_window" id="action_email_templates">
             <field name="name">Email Templates</field>
