@@ -4,7 +4,7 @@
         <!-- EDI related Email Templates menu -->
         <record model="ir.actions.act_window" id="action_email_templates">
             <field name="name">Email Templates</field>
-            <field name="res_model">mail.template</field>
+            <field name="res_model">email.template</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
             <field name="view_id" ref="email_template.email_template_tree" />
