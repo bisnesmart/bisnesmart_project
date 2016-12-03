@@ -11,7 +11,7 @@
             <field name="search_view_id" ref="email_template.view_email_template_search"/>
             <field name="context" eval="{'search_default_model_id': ref('project.model_project_task')}"/>
         </record>
-    </data> -->
+    </data>
 
     <!-- Mail template is done in a NOUPDATE block
          so users can freely customize/delete them -->
