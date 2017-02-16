@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Para que el informe funcione corecctamente hay que poner secuencias a las tareas (SI==100) (NO==110) (BIEN == 130) (REGULA==140) (MAL == 150)-->
+<openerp>
+    <data>
+      <!--Creo la opcion de imprimir en ela pantalla de tareas-->
+         <report id="task_work_report"
+               string="Parte de trabajo"
+               model="project.task"
+               name="project_work_report.work_report"
+               report_type="qweb-pdf"/>
+
+    <template id="work_report">
+        <t t-call="report.html_container">
+          <t t-foreach="docs" t-as="o">
+            <div class="col-xs-6 col-xs-offset-1">
+            <t t-call="report.external_layout"></t>
+            </div>
+            <div class="page">
+
+      <xpath expr="//head" position="inside">
+        <link rel='stylesheet' href="project_work_report/static/src/css/style.css"/>
+      </xpath>
+
+
+            <div class="oe_structure">
+            <div id="parte" class="col-xs-6 mt16">
+              <h3>
+              Parte de trabajo
+              </h3>
+            </div>
+
+            <div class="row zero_min_height">
+              <div class="col-xs-12">
+                <div class="parte_baja"/>
+              </div>
+            </div>
+
+            <div class="row mt32 mb32">
+
+              <div id="fondo" class="col-xs-6" >
+                <table class="table table-condensed" >
+                  <tr class="border-black">
+                  <div t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}"/>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row mt32 mb32">
+              <div class="tabla_gris" >
+                <table class="style_tabla_gris">
+                <tr>
+                  <td>
+                    <span class="info" >Title: </span>
+                  </td>
+                  <td>
+                    <span t-field="o.name"/>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <span  class="info" >Code: </span>
+                    </td>
+                    <td>
+                      <span t-field="o.id"/>
+                    </td>
+                </tr>
+             
+                  <tr>
+                      <td>
+                          <span  class="info" >Technician: </span>
+                      </td>
+                      <td>
+                          <span t-field="o.user_id"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span  class="info" >Date: </span>
+                      </td>
+                      <td>
+                          <span t-field="o.date_start" t-field-options='{"widget": "date"}'/>
+                      </td>
+                  </tr>
+                 
+
+            </table>
+              </div>
+
+            </div>
+
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>Trabajos realizados</th>
+                </tr>
+              </thead>
+
+              <tbody class="sale_tbody" >
+              <tr t-foreach="o.work_ids" t-as="work">
+                <td>
+                  <span t-field="work.name"/>
+                </td>                                
+                <td>
+                  <span t-field="work.hours"/>
+                </td>
+                 <td>
+                  <span t-field="work.date"/>
+                </td>
+                <td>
+                  <span t-field="work.user_id"/>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+
+           
+
+ <div  class="col-xs-6 mt64 pull-right">
+              <table id="tabla_firma">
+                <tr>
+                  <td>Cliente conforme
+                  <img t-if="o.customer_signature" t-att-src="'data:image/png;base64,%s' % o.customer_signature"/>
+                
+                  </td>                 
+              </tr>                    
+              </table>
+            </div>
+            </div>
+            </div>
+          </t>
+        </t>
+    </template>
+</data>
+</openerp>
